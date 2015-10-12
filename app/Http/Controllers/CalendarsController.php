@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Calendar;
 
 class CalendarsController extends Controller
 {
@@ -27,7 +28,8 @@ class CalendarsController extends Controller
     public function create()
     {
         //
-//      return view('calendars.create');
+      $data['title'] = "Hello World";
+      return view('calendars.create')->with($data);
     }
 
     /**
