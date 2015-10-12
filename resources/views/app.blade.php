@@ -12,7 +12,7 @@
         <h1>@yield('title')</h1>
         @yield('content')
     </div>
-    <script src="js/all.js"></script>
+    <script src="/js/all.js"></script>
     <script>
       $('div.alert').not('.alert-important').delay(3000).slideUp(300);
     </script>
