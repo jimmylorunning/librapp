@@ -26,7 +26,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         parent::boot($router);
 
-        $router->model('calendar', 'App\Calendar');
+        $router->model('calendars', 'App\Calendar');
     }
 
     /**
