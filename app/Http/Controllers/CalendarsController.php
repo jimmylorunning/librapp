@@ -16,8 +16,8 @@ class CalendarsController extends Controller
      */
     public function index()
     {
-      $calendars = Calendar::all();
-      return $calendars;
+      $calendars = Calendar::all()->toArray();
+      return view('calendars.index', compact('calendars'));
     }
 
     /**
