@@ -28,7 +28,7 @@ class CalendarsController extends Controller
     public function create()
     {
         //
-      $data['title'] = "Hello World";
+      $data['title'] = "New Calendar";
       return view('calendars.create')->with($data);
     }
 
@@ -38,9 +38,9 @@ class CalendarsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Calendar $request)
     {
-        //
+      dd($request);
     }
 
     /**
@@ -51,7 +51,7 @@ class CalendarsController extends Controller
      */
     public function show($id)
     {
-        //
+      return "show";
     }
 
     /**
@@ -62,7 +62,7 @@ class CalendarsController extends Controller
      */
     public function edit($id)
     {
-        //
+      return "edit";
     }
 
     /**
@@ -74,7 +74,7 @@ class CalendarsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      return "update";
     }
 
     /**
@@ -85,6 +85,6 @@ class CalendarsController extends Controller
      */
     public function destroy($id)
     {
-        //
+      return "destroy";
     }
 }
