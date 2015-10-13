@@ -11,8 +11,8 @@
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
   </div>
   <div class="form-group">
-    {!! Form::label('begins', 'Start date:' ) !!}
-    {!! Form::input('date', 'begins', null, ['class' => 'form-control']) !!}
+    {!! Form::label('starts', 'Start date:' ) !!}
+    {!! Form::input('date', 'starts', null, ['class' => 'form-control']) !!}
   </div>
   <div class="form-group">
     {!! Form::label('ends', 'End date:' ) !!}
@@ -20,7 +20,7 @@
   </div>
   <div class="form-group">
     {!! Form::label('audience', 'Audience:' ) !!}
-    {!! Form::select('audience[]', ['adults' => 'adults', 'children' => 'children'], null, ['class' => 'form-control']) !!}
+    {!! Form::select('audience', ['adult' => 'adult', 'children' => 'children'], null, ['class' => 'form-control']) !!}
   </div>
   <div class="form-group">
     {!! Form::submit('Add Calendar', ['class' => 'btn btn-primary']) !!}  

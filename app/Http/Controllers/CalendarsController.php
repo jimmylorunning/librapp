@@ -16,8 +16,8 @@ class CalendarsController extends Controller
      */
     public function index()
     {
-        //
-      return "index";
+      $calendars = Calendar::all();
+      return $calendars;
     }
 
     /**
@@ -38,9 +38,10 @@ class CalendarsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Calendar $request)
+    public function store(Request $calendarRequest)
     {
-      dd($request);
+      $calendar = Calendar::create($calendarRequest->input()); 
+      return redirect()->action('CalendarsController@index');
     }
 
     /**
