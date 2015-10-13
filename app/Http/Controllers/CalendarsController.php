@@ -50,9 +50,9 @@ class CalendarsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Calendar $calendar)
     {
-      return "show";
+      return view('calendars.show', compact('calendar'));
     }
 
     /**
