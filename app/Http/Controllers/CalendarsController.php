@@ -61,9 +61,10 @@ class CalendarsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Calendar $calendar)
     {
-      return "edit";
+      $title = 'Edit Calendar';
+      return view('calendars.edit', compact('calendar', 'title'));
     }
 
     /**
