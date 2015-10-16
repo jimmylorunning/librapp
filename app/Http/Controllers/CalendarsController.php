@@ -28,8 +28,9 @@ class CalendarsController extends Controller
     public function create()
     {
         //
-      $data['title'] = "New Calendar";
-      return view('calendars.create')->with($data);
+      $title = "New Calendar";
+      $audiences = \App\Audience::lists('name', 'id');
+      return view('calendars.create', compact('title', 'audiences'));
     }
 
     /**
@@ -64,7 +65,8 @@ class CalendarsController extends Controller
     public function edit(Calendar $calendar)
     {
       $title = 'Edit Calendar';
-      return view('calendars.edit', compact('calendar', 'title'));
+      $audiences = \App\Audience::lists('name', 'id');
+      return view('calendars.edit', compact('calendar', 'title', 'audiences'));
     }
 
     /**

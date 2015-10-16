@@ -12,7 +12,7 @@
   </div>
   <div class="form-group">
     {!! Form::label('audience', 'Audience:' ) !!}
-    {!! Form::select('audience', ['adult' => 'adult', 'children' => 'children'], null, ['class' => 'form-control']) !!}
+    {!! Form::select('audience', $audiences, null, ['class' => 'form-control']) !!}
   </div>
   <div class="form-group">
     {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary']) !!}  
