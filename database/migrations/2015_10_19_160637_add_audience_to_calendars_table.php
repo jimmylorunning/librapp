@@ -13,8 +13,8 @@ class AddAudienceToCalendarsTable extends Migration
     public function up()
     {
       Schema::table('calendars', function (Blueprint $table) {
-        $table->unsignedInteger('audience');
-        $table->foreign('audience')
+        $table->unsignedInteger('audience_id');
+        $table->foreign('audience_id')
           ->references('id')
           ->on('audiences');
       });
@@ -28,7 +28,7 @@ class AddAudienceToCalendarsTable extends Migration
     public function down()
     {
       Schema::table('calendars', function (Blueprint $table) {
-        $table->dropColumn('audience');
+        $table->dropColumn('audience_id');
       });
     }
 }
