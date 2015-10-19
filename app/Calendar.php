@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 class Calendar extends Model
 {
-  protected $fillable = ['name', 'starts', 'ends', 'audience'];
+  protected $fillable = ['name', 'starts', 'ends', 'audience_id'];
 
   public function getStartsAttribute($date) {
     return new Carbon($date);
@@ -15,5 +15,10 @@ class Calendar extends Model
 
   public function getEndsAttribute($date) {
     return new Carbon($date);
+  }
+
+  public function audience()
+  {
+    return $this->belongsTo('App\Audience', 'audience_id');
   }
 }

@@ -41,6 +41,7 @@ class CalendarsController extends Controller
      */
     public function store(Request $calendarRequest)
     {
+//      dd($calendarRequest->input());
       $calendar = Calendar::create($calendarRequest->input()); 
       return redirect()->action('CalendarsController@index');
     }
