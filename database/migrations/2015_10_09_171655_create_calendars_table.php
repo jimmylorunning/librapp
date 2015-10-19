@@ -17,7 +17,6 @@ class CreateCalendarsTable extends Migration
             $table->string('name');
             $table->timestamp('starts');
             $table->timestamp('ends');
-            $table->enum('audience', ['children', 'adult']);
             $table->timestamps();
         });
     }
