@@ -21,4 +21,9 @@ class Calendar extends Model
   {
     return $this->belongsTo('App\Audience', 'audience_id');
   }
+
+  public function events()
+  {
+    return $this->belongsToMany('App\Event');
+  }
 }
