@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('calendars', 'CalendarsController');
+Route::resource('events', 'EventsController');
