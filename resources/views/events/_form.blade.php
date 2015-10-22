@@ -5,7 +5,7 @@
   <div class="form-group">
     {!! Form::label('calendars', 'Calendar:') !!}
     @foreach ($calendars as $id => $calendar)
-      {!! Form::checkbox("calendars[]", $id) !!}
+      {!! Form::checkbox("calendars[]", $id, in_array($id, $checked)) !!}
       {!! $calendar !!}
     @endforeach
   </div>
