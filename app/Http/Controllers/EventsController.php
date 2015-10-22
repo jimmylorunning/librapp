@@ -76,9 +76,11 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Event $event)
     {
-      return "update";
+      $event->update($request->input());
+      $event->calendars()->sync($request->input()['calendars']);
+      return redirect()->action('EventsController@index');
     }
 
     /**
