@@ -28,7 +28,8 @@ class EventsController extends Controller
     public function create()
     {
       $calendars = \App\Calendar::lists('name', 'id');
-      return view('events.create', compact('calendars'));
+      $checked = [];
+      return view('events.create', compact('calendars', 'checked'));
     }
 
     /**
@@ -61,9 +62,11 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Event $event)
     {
-        //
+      $calendars = \App\Calendar::lists('name', 'id'); 
+      $checked = $event->calendars()->lists('id')->toArray();
+      return view('events.edit', compact('calendars', 'checked', 'event'));
     }
 
     /**
