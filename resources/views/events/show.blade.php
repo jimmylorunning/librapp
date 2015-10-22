@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-  <h1>{!! $event->name !!}</h1>
+  {!! $event->name !!}
 @stop
 
 @section('content')
