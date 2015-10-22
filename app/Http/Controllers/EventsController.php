@@ -16,7 +16,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        //
+      return "index";
     }
 
     /**
@@ -26,7 +26,8 @@ class EventsController extends Controller
      */
     public function create()
     {
-      return view('events.create');
+      $calendars = \App\Calendar::lists('name', 'id');
+      return view('events.create', compact('calendars'));
     }
 
     /**
@@ -37,7 +38,9 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $event = Event::create($request->input());
+      $event->calendars()->sync($request->input()['calendars']);
+      return redirect()->action('EventsController@index');
     }
 
     /**

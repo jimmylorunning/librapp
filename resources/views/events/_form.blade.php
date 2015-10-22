@@ -3,9 +3,9 @@
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
   </div>
   <div class="form-group">
-    {!! Form::label('calendar', 'Calendar:') !!}
+    {!! Form::label('calendars', 'Calendar:') !!}
     @foreach ($calendars as $id => $calendar)
-      {!! Form::checkbox($calendar, $id) !!}
+      {!! Form::checkbox("calendars[]", $id) !!}
       {!! $calendar !!}
     @endforeach
   </div>
