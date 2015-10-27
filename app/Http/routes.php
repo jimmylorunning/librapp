@@ -17,3 +17,8 @@ Route::get('/', function () {
 
 Route::resource('calendars', 'CalendarsController');
 Route::resource('events', 'EventsController');
+
+Route::controllers([
+  'auth' => 'Auth\AuthController',
+  'password' => 'Auth\PasswordController',
+]);
