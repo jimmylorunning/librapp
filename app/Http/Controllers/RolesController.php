@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Role;
+use App\Forms\RoleForm;
 
 class RolesController extends Controller
 {
@@ -27,7 +28,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        //
+      return view('roles.create');
     }
 
     /**
