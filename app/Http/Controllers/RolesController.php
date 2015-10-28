@@ -39,7 +39,8 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $role = Role::create($request->input());
+      return redirect()->action('RolesController@index');
     }
 
     /**
