@@ -60,9 +60,9 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        //
+      return view('roles.edit', compact('role'));
     }
 
     /**
@@ -72,9 +72,10 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Role $role)
     {
-        //
+      $role->update($request->input());
+      return redirect()->action('RolesController@index');
     }
 
     /**
@@ -85,6 +86,6 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
-        //
+      return 'hello';
     }
 }
