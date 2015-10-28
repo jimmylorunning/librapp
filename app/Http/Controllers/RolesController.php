@@ -84,8 +84,9 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-      return 'hello';
+      $role->delete();
+      return redirect()->action('RolesController@index');
     }
 }
