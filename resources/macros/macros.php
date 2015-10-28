@@ -28,6 +28,13 @@ Form::macro("field", function($options)
     {
       $choices = $options["choices"];
     }
+
+    $id = 1;
+
+    if (!empty($options["id"]))
+    {
+      $id = $options["id"];
+    }
     
     $value = Input::old($name);
     
@@ -79,6 +86,14 @@ Form::macro("field", function($options)
            $markup .= Form::text($name, $value, $parameters);
            break;
         }
+        case "textarea":
+        {
+          $markup .= Form::label($name, $label, [
+            "class" => "control-label"
+          ]);
+          $markup .= Form::textarea($name, $value, $parameters);
+          break;
+        }
         case "date":
         {
           $markup .= Form::label($name, $label, [
@@ -99,7 +114,7 @@ Form::macro("field", function($options)
         {
             $markup .= "<div class='checkbox'>";
             $markup .= "<label>";
-            $markup .= Form::checkbox($name, 1, (boolean) $value);
+            $markup .= Form::checkbox($name, $id, (boolean) $value);
             $markup .= " " . $label;
             $markup .= "</label>";
             $markup .= "</div>";

@@ -1,26 +1,8 @@
-  <div class="form-group">
-    {!! Form::label('name', 'Name:' ) !!}
-    {!! Form::text('name', null, ['class' => 'form-control']) !!}
-  </div>
-  <div class="form-group">
-    {!! Form::label('calendars', 'Calendar:') !!}
-    @foreach ($calendars as $id => $calendar)
-      {!! Form::checkbox("calendars[]", $id, in_array($id, $checked)) !!}
-      {!! $calendar !!}
-    @endforeach
-  </div>
-  <div class="form-group">
-    {!! Form::label('starts', 'Start date:' ) !!}
-    {!! Form::input('date', 'starts', $event->starts->format('Y-m-d'), ['class' => 'form-control']) !!}
-  </div>
-  <div class="form-group">
-    {!! Form::label('ends', 'End date:' ) !!}
-    {!! Form::input('date', 'ends', $event->ends->format('Y-m-d'), ['class' => 'form-control']) !!}
-  </div>
-  <div class="form-group">
-    {!! Form::label('description', 'Description:' ) !!}
-    {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
-  </div>
-  <div class="form-group">
-    {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary']) !!}  
-  </div>
+  {!! Form::field(['label' => 'Name:', 'name' => 'name']) !!}
+  @foreach ($calendars as $id => $calendar)
+    {!! Form::field(['type' => 'checkbox', 'name' => "calendars[]", 'label' => $calendar, 'id' => $id, 'value' => in_array($id, $checked)]) !!}
+  @endforeach
+  {!! Form::field(['type' => 'date', 'label' => 'Start date:', 'name' => 'starts', 'value' => $event->starts->format('Y-m-d')]) !!}
+  {!! Form::field(['type' => 'date', 'label' => 'End date:', 'name' => 'ends', 'value' => $event->ends->format('Y-m-d')]) !!}
+  {!! Form::field(['type' => 'textarea', 'label' => 'Description:', 'name' => 'description']) !!}
+  {!! Form::field(['type' => 'submit', 'name' => $submitButtonText, 'class' => 'btn btn-primary']) !!}
