@@ -1,19 +1,5 @@
-  <div class="form-group">
-    {!! Form::label('name', 'Name:' ) !!}
-    {!! Form::text('name', null, ['class' => 'form-control']) !!}
-  </div>
-  <div class="form-group">
-    {!! Form::label('starts', 'Start date:' ) !!}
-    {!! Form::input('date', 'starts', $calendar->starts->format('Y-m-d'), ['class' => 'form-control']) !!}
-  </div>
-  <div class="form-group">
-    {!! Form::label('ends', 'End date:' ) !!}
-    {!! Form::input('date', 'ends', $calendar->ends->format('Y-m-d'), ['class' => 'form-control']) !!}
-  </div>
-  <div class="form-group">
-    {!! Form::label('audience_id', 'Audience:' ) !!}
-    {!! Form::select('audience_id', $audiences, null, ['class' => 'form-control']) !!}
-  </div>
-  <div class="form-group">
-    {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary']) !!}  
-  </div>
+  {!! Form::field(['label' => 'Name:', 'name' => 'name']) !!}
+  {!! Form::field(['type' => 'date', 'label' => 'Start date:', 'name' => 'starts', 'value' => $calendar->starts->format('Y-m-d')]) !!}
+  {!! Form::field(['type' => 'date', 'label' => 'End date:', 'name' => 'ends', 'value' => $calendar->ends->format('Y-m-d')]) !!}
+  {!! Form::field(['type' => 'select', 'label' => 'Audience:', 'choices' => $audiences, 'name' => 'audience_id']) !!}
+  {!! Form::field(['type' => 'submit', 'name' => $submitButtonText, 'class' => 'btn btn-primary']) !!}

@@ -21,6 +21,13 @@ Form::macro("field", function($options)
     {
         $label = $options["label"];
     }
+
+    $choices = [];
+
+    if (!empty($options["choices"]))
+    {
+      $choices = $options["choices"];
+    }
     
     $value = Input::old($name);
     
@@ -72,6 +79,14 @@ Form::macro("field", function($options)
            $markup .= Form::text($name, $value, $parameters);
            break;
         }
+        case "date":
+        {
+          $markup .= Form::label($name, $label, [
+            "class" => "control-label"
+            ]);
+          $markup .= Form::input('date', $name, $value, $parameters);
+          break;
+        }
         case "password":
         {
             $markup .= Form::label($name, $label, [
@@ -89,6 +104,19 @@ Form::macro("field", function($options)
             $markup .= "</label>";
             $markup .= "</div>";
             break;
+        }
+        case "select":
+        {
+          $markup .= Form::label($name, $label, [
+              "class" => "control-label"
+          ]);
+          $markup .= Form::select($name, $choices, $value, $parameters);
+          break;
+        }
+        case "submit":
+        {
+          $markup .= Form::submit($name, $parameters);
+          break;
         }
         case "hidden":
         {
