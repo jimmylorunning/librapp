@@ -6,7 +6,7 @@
   @if (count($roles))
     <ul>
     @foreach ($roles as $role)
-      <li>{!! link_to_action('RolesController@show', $role->name, ['class' => 'btn btn-default', 'id' => $role->id]) !!}</li>
+      <li>{!! link_to_action('RolesController@show', $role->name, [$role->id]) !!}</li>
     @endforeach
     </ul>
   @else
