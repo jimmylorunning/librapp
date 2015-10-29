@@ -12,4 +12,9 @@ class Role extends Model
   {
     return $this->belongsToMany('App\User');
   }
+
+  public function resources()
+  {
+    return $this->belongsToMany('App\Resource')->withTimestamps();
+  }
 }
