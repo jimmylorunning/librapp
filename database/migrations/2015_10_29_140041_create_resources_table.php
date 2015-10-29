@@ -14,6 +14,7 @@ class CreateResourcesTable extends Migration
     {
         Schema::create('resources', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('verb');
             $table->string('name');
             $table->string('pattern');
             $table->string('target');
@@ -42,7 +43,7 @@ class CreateResourcesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resources');
         Schema::dropIfExists('resource_role');
+        Schema::dropIfExists('resources');
     }
 }
