@@ -1,5 +1,4 @@
 <?php
-include('AudiencesTableSeeder.php');
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,6 +14,7 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         $this->call(AudiencesTableSeeder::class);
+        $this->call(ResourcesTableSeeder::class);
 
         Model::reguard();
     }
