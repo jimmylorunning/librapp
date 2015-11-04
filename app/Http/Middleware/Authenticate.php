@@ -35,19 +35,12 @@ class Authenticate
     public function handle($request, Closure $next)
     {
         if ($this->auth->check()) {
-          foreach ($this->auth->user()->roles as $role)
+          if ($this->auth->user()->hasAccessToPath($request->path()))
           {
-            foreach ($role->resources as $resource)
-            {
-              $path = $request->path();
-
-              if ($resource->pattern == $path)
-              {
-                return $next($request);
-              }
-            }
+            return $next($request);
+          } else {
+            return $this->bounceNoAuth($request);
           }
-          return $this->bounceNoAuth($request);
         } 
 
         return $this->bounceGuest($request);

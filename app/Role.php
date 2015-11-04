@@ -17,4 +17,16 @@ class Role extends Model
   {
     return $this->belongsToMany('App\Resource');
   }
+
+  public function hasAccessToPath($request_path)
+  {
+    foreach ($this->resources as $resource)
+    {
+      if ($resource->pattern == $request_path)
+      {
+        return true;
+      }
+    }
+    return false;
+  }
 }
