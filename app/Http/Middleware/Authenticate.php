@@ -34,14 +34,40 @@ class Authenticate
      */
     public function handle($request, Closure $next)
     {
-        if ($this->auth->guest()) {
-            if ($request->ajax()) {
-                return response('Unauthorized.', 401);
-            } else {
-                return redirect()->guest('auth/login');
-            }
-        }
+        if ($this->auth->check()) {
+          foreach ($this->auth->user()->roles as $role)
+          {
+            foreach ($role->resources as $resource)
+            {
+              $path = $request->path();
 
-        return $next($request);
+              if ($resource->pattern == $path)
+              {
+                return $next($request);
+              }
+            }
+          }
+          return $this->bounceNoAuth($request);
+        } 
+
+        return $this->bounceGuest($request);
+    }
+
+    private function bounceGuest($request)
+    {
+      if ($request->ajax()) {
+          return response('Unauthorized.', 401);
+      } else {
+          return redirect()->guest('auth/login');
+      }
+    }
+
+    private function bounceNoAuth($request)
+    {
+      if ($request->ajax()) {
+        return response('Unauthorized', 401);
+      } else {
+        return redirect()->guest('/')->with('flash_message', 'You cannot access that page.');
+      }
     }
 }

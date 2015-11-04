@@ -15,6 +15,6 @@ class Role extends Model
 
   public function resources()
   {
-    return $this->belongsToMany('App\Resource')->withTimestamps();
+    return $this->belongsToMany('App\Resource');
   }
 }

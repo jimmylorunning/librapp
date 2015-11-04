@@ -9,6 +9,6 @@ class Resource extends Model
   protected $fillable = ['name', 'pattern', 'target', 'secure'];
 
   public function roles() {
-    $this->belongsToMany('App\Role')->withTimestamps();
+    return $this->belongsToMany('App\Role');
   }
 }
