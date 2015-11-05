@@ -17,5 +17,5 @@
   @else
     <p>There are no users</p>
   @endif
-  {!! link_to_action('UsersController@create', 'Add User', 'btn btn-default') !!}
+  {!! link_to_action('UsersController@create', 'Add User', [], ['class' => 'btn btn-default']) !!}
 @stop

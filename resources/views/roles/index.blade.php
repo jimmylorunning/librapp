@@ -17,5 +17,5 @@
   @else
     <p>There are no roles</p>
   @endif
-  {!! link_to_action('RolesController@create', 'Add Role', 'btn btn-default') !!}
+  {!! link_to_action('RolesController@create', 'Add Role', [], ['class' => 'btn btn-default'] ) !!}
 @stop
