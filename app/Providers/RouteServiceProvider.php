@@ -29,6 +29,7 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('calendars', 'App\Calendar');
         $router->model('events', 'App\Event');
         $router->model('roles', 'App\Role');
+        $router->model('users', 'App\User');
     }
 
     /**
