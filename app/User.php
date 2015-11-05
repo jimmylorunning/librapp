@@ -64,11 +64,11 @@ class User extends Model implements AuthenticatableContract,
       return $this->roles()->detach($role);
     }
 
-    public function hasAccessToPath($request_path)
+    public function hasAccessToPath($request_path, $method)
     {
       foreach ($this->roles as $role)
       {
-        if ($role->hasAccessToPath($request_path)) {
+        if ($role->hasAccessToPath($request_path, $method)) {
           return true;
         }
       }

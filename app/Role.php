@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Helpers\ResourcePattern;
 use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
@@ -18,11 +19,12 @@ class Role extends Model
     return $this->belongsToMany('App\Resource');
   }
 
-  public function hasAccessToPath($request_path)
+  public function hasAccessToPath($request_path, $method)
   {
     foreach ($this->resources as $resource)
     {
-      if ($resource->pattern == $request_path)
+      $rpattern = new ResourcePattern($resource->pattern);
+      if ($rpattern->pregMatch($request_path) && ($resource->verb == $method)) 
       {
         return true;
       }
