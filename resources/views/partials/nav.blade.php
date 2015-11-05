@@ -11,8 +11,14 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Foo</a></li>
-            <li><a href="#">Bar</a></li>
+            @if (Auth::user())
+              @if (Auth::user()->hasAccessToPath('calendars', 'get'))
+                <li><a href="{{route('calendars.index')}}">Calendars</a></li>
+              @endif 
+              @if (Auth::user()->hasAccessToPath('events', 'get'))
+                <li><a href="{{route('events.index')}}">Events</a></li>
+              @endif
+            @endif
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
