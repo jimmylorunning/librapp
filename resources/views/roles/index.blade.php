@@ -4,7 +4,7 @@
 @stop
 @section('content')
   @if (count($roles))
-    <ul class="roles_index">
+    <ul class="index">
     @foreach ($roles as $role)
       <li>{!! link_to_action('RolesController@show', $role->name, [$role->id]) !!} /
         {!! link_to_action('RolesController@edit', 'edit', [$role->id], ['class' => 'btn btn-xs btn-default']) !!} /
