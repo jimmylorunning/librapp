@@ -5,9 +5,20 @@ namespace App\Helpers;
 class ResourcePattern
 {
   protected $pattern;
+  protected $method;
 
-  public function __construct($pattern) {
-    $this->pattern = $pattern;
+  public function __construct(){
+  }
+
+  public function setResource($resource)
+  {
+    $this->pattern = $resource->pattern;
+    $this->method = $resource->verb;
+  }
+
+  public function matches($path, $method)
+  {
+    return ($this->pregMatch($path) && ($this->method == $method));
   }
 
   public function pregMatch($path) {

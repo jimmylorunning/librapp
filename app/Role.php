@@ -21,10 +21,11 @@ class Role extends Model
 
   public function hasAccessToPath($request_path, $method)
   {
+    $resource_pattern = new ResourcePattern();
     foreach ($this->resources as $resource)
     {
-      $rpattern = new ResourcePattern($resource->pattern);
-      if ($rpattern->pregMatch($request_path) && ($resource->verb == $method)) 
+      $resource_pattern->setResource($resource);
+      if ($resource_pattern->matches($request_path, $method))
       {
         return true;
       }
