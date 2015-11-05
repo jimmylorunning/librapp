@@ -72,7 +72,8 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+      $user->update($request->input());
+      return redirect()->action('UsersController@index')->with('flash_message', 'success');
     }
 
     /**
