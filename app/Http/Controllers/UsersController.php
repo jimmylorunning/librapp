@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -38,7 +39,8 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $user = User::create($request->input());
+      return redirect()->action('UsersController@index')->with('flash_message', 'success');
     }
 
     /**

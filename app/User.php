@@ -42,6 +42,11 @@ class User extends Model implements AuthenticatableContract,
       return $this->belongsToMany('App\Role');
     }
 
+    public function setPasswordAttribute($password)
+    {
+      $this->attributes['password'] = bcrypt($password);
+    }
+
     public function hasRole($name)
     {
       foreach($this->roles as $role)
