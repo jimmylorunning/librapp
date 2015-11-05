@@ -13,9 +13,11 @@ class ResourcesTableSeeder extends Seeder
     public function run()
     {
       $resources = array_merge(
-        $this->resourceRoutes('calendars'),
-        $this->resourceRoutes('events'),
-        $this->resourceRoutes('roles'));
+//        $this->resourceRoutes('calendars'),
+//        $this->resourceRoutes('events'),
+//        $this->resourceRoutes('roles'),
+        $this->resourceRoutes('users')
+      );
 
       foreach($resources as $resource) {
         Resource::create($resource);
