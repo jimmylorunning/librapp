@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Role;
+use App\User;
+use App\Resource;
 use App\Forms\RoleForm;
 
 class RolesController extends Controller
@@ -18,6 +20,7 @@ class RolesController extends Controller
     public function index()
     {
       $roles = Role::all();
+
       return view('roles.index', compact('roles'));
     }
 
@@ -62,7 +65,9 @@ class RolesController extends Controller
      */
     public function edit(Role $role)
     {
-      return view('roles.edit', compact('role'));
+      $users = User::all();
+      $resources = Resource::all();
+      return view('roles.edit', compact('role', 'users', 'resources'));
     }
 
     /**
@@ -75,6 +80,8 @@ class RolesController extends Controller
     public function update(Request $request, Role $role)
     {
       $role->update($request->input());
+      $role->users()->sync($request->input()['user_id']);
+      $role->resources()->sync($request->input()['resource_id']);
       return redirect()->action('RolesController@index');
     }
 
