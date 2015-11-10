@@ -18,7 +18,7 @@ class ResourcePattern
 
   public function matches($path, $method)
   {
-    return ($this->pregMatch($path) && ($this->method == $method));
+    return ($this->pregMatch($path) && (strcasecmp($this->method, $method)) == 0);
   }
 
   public function pregMatch($path) {
