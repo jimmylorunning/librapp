@@ -12,4 +12,7 @@ Events
     </li>
   @endforeach
   </ul>
+  @if (Auth::user()->hasAccessToPath('events/create', 'get'))
+    {!! link_to_action('EventsController@create', 'Add', [], ['class' => 'btn btn-default'] ) !!}
+  @endif
 @stop

@@ -17,5 +17,7 @@
   @else
     <p>There are no roles</p>
   @endif
-  {!! link_to_action('RolesController@create', 'Add Role', [], ['class' => 'btn btn-default'] ) !!}
+  @if (Auth::user()->hasAccessToPath('roles/create', 'get'))
+    {!! link_to_action('RolesController@create', 'Add Role', [], ['class' => 'btn btn-default'] ) !!}
+  @endif
 @stop
