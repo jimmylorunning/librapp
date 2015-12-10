@@ -80,8 +80,10 @@ class RolesController extends Controller
     public function update(Request $request, Role $role)
     {
       $role->update($request->input());
-      $role->users()->sync($request->input()['user_id']);
-      $role->resources()->sync($request->input()['resource_id']);
+      $role->users()->sync(
+        $this->getInputArray($request, 'user_id'));
+      $role->resources()->sync(
+        $this->getInputArray($request, 'resource_id'));
       return redirect()->action('RolesController@index');
     }
 
@@ -95,5 +97,13 @@ class RolesController extends Controller
     {
       $role->delete();
       return redirect()->action('RolesController@index');
+    }
+
+
+    private function getInputArray($request, $name) {
+      if (array_key_exists($name, $request->input())) {
+        return $request->input()[$name];
+      }
+      return [];
     }
 }
