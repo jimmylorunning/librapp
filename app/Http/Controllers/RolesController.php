@@ -45,6 +45,7 @@ class RolesController extends Controller
     public function store(Request $request)
     {
       $role = Role::create($request->input());
+      $this->sync($role, $request);
       return redirect()->action('RolesController@index');
     }
 
@@ -82,10 +83,7 @@ class RolesController extends Controller
     public function update(Request $request, Role $role)
     {
       $role->update($request->input());
-      $role->users()->sync(
-        $this->getInputArray($request, 'user_id'));
-      $role->resources()->sync(
-        $this->getInputArray($request, 'resource_id'));
+      $this->sync($role, $request);
       return redirect()->action('RolesController@index');
     }
 
@@ -107,5 +105,13 @@ class RolesController extends Controller
         return $request->input()[$name];
       }
       return [];
+    }
+
+    private function sync($role, $request) {
+      $role->users()->sync(
+        $this->getInputArray($request, 'user_id'));
+      $role->resources()->sync(
+        $this->getInputArray($request, 'resource_id'));
+      return $role;
     }
 }
