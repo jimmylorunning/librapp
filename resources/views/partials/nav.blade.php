@@ -18,6 +18,9 @@
               @if (Auth::user()->hasAccessToPath('events', 'get'))
                 <li><a href="{{route('events.index')}}">Events</a></li>
               @endif
+              @if (Auth::user()->hasAccessToPath('roles', 'get'))
+                <li><a href="{{route('roles.index')}}">Roles</a></li>
+              @endif
             @endif
           </ul>
           <ul class="nav navbar-nav navbar-right">
