@@ -31,7 +31,9 @@ class RolesController extends Controller
      */
     public function create()
     {
-      return view('roles.create');
+      $users = User::all();
+      $resources = Resource::all();
+      return view('roles.create', compact('users', 'resources'));
     }
 
     /**
